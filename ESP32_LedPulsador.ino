@@ -1,3 +1,8 @@
+/*
+*
+* Programa muy basico. Porque ? Se puede mejorar ? 
+*/
+
 // Constantes para los pines
 const int PULSADOR = 35;
 const int LedPin = 32;
