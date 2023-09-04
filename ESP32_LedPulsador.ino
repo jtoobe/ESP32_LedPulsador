@@ -1,32 +1,38 @@
 /*
-*
-* Programa muy basico. Porque ? Se puede mejorar ? 
+
+Al pulsar el boton el led se prende
+
+Interruptor definido como input_pullup porque ?
+
 */
 
-// Constantes para los pines
-const int PULSADOR = 35;
-const int LedPin = 32;
 
-// Variable para almacenar el estado del PULSADOR
-int estado; 
 
-void setup(){
-    // PULSADOR configurado como entrada 
-    pinMode(PULSADOR,INPUT);
-    // LED configurado como salida 
-    pinMode(LedPin,OUTPUT);
+const int buttonPin = 23;
+const int ledPin =  32;
+
+// State of the push button
+int buttonState = 0;
+
+
+void setup() {
+    Serial.begin(115200);
+
+    //Set the pin as an input pullup
+    pinMode(buttonPin, INPUT_PULLUP);
+    pinMode(ledPin, OUTPUT);
 }
 
-void loop(){
-    // Se almacena el estado del pulsador
-  estado = digitalRead(PULSADOR); 
-    // Si la lectura del pulsador es HIGH (pulsado)...
-  if  (estado == HIGH){
-        // ... enciende el LED.
-    digitalWrite(LedPin,HIGH);
-      // En caso contrario (no pulsado)... 
-  } else { 
-        // Apaga el LED
-        digitalWrite(LedPin,LOW); 
-  }
+void loop() {
+
+    buttonState = digitalRead(buttonPin);
+    Serial.println(buttonState);
+
+    if (buttonState == LOW) {
+        // Switch on the led
+        digitalWrite(ledPin, HIGH);
+    } else {
+        // Switch off the led
+        digitalWrite(ledPin, LOW);
+    }
 }
